@@ -3,6 +3,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id "org.sonarqube" version "2.7"
 }
 
 group 'com.timtrense'
