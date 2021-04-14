@@ -32,6 +32,33 @@ public class Template {
         this.parts = parts.toArray( new TemplatePart[0] );
     }
 
+
+    /**
+     * Ad-Hoc compiles a {@link Template} from the given source text and
+     * uses the given {@link Context} to {@link #process(Context)} it.
+     *
+     * @param templateText the template source text
+     * @param context      all placeholder values to put in combined with a locale setting
+     * @return the actual text
+     */
+    public static String process( @NonNull String templateText, @NonNull Context context ) {
+        Template template = TemplateBuilder.build( templateText );
+        return template.process( context );
+    }
+
+    /**
+     * Ad-Hoc compiles a {@link Template} from the given source text and
+     * creates a default {@link Context} to {@link #process(Context)} it.
+     *
+     * @param templateText the template source text
+     * @param values       the placeholder values to put in
+     * @return the actual text
+     */
+    public static String process( @NonNull String templateText, @NonNull Map<@NonNull String, Object> values ) {
+        Template template = TemplateBuilder.build( templateText );
+        return template.process( values );
+    }
+
     /**
      * Build the actual text from replacing the contained placeholders for their respective actual values
      *
@@ -92,9 +119,8 @@ public class Template {
      * @param values the values of a {@link Context} (constructed with otherwise default settings) containing the necessary information to resolve the placeholders
      * @return the actual resolved text
      */
-    public String process( Map<@NonNull String, Object> values ) {
+    public String process( @NonNull Map<@NonNull String, Object> values ) {
         Context context = new Context( values );
         return process( context );
     }
-
 }
