@@ -30,8 +30,5 @@ build/*
 # gradle managed local folder
 .gradle/*
 
-# gradle wrapper
-gradle/wrapper/gradle-wrapper.jar
-
 # IDE configurations
 .idea/*
