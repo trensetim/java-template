@@ -17,7 +17,7 @@ public class CustomPlaceholderExample {
 
         ( (StandardTemplateLanguage)builder.getTemplateLanguage() )
                 .getPlaceholderDefinitions()
-                .put( "myPlaceholder", PlaceholderDefinition.of( ( context ) ->
+                .put( "myPlaceholder", PlaceholderDefinition.of( context ->
                         String.join( " and ", (List<String>)context.get( "names" ) )
                 ) );
 
