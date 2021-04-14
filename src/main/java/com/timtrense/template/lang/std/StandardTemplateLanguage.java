@@ -39,9 +39,9 @@ public class StandardTemplateLanguage implements TemplateLanguage {
 
     private static final Pattern PLACEHOLDER_WRAPPER = Pattern.compile( "\\$([^(]*)\\(([^}]*)\\)" );
     private static final Map<String, PlaceholderDefinition> PLACEHOLDER_DEFINITIONS = Map.of(
-            "", new TextPlaceholderDefinition( ",\\s*" ),
-            "datetime", new DateTimePlaceholderDefinition( ",\\s*" ),
-            "enum", new EnumPlaceholderDefinition( ",\\s*" )
+            "", new TextPlaceholderDefinition( ',' ),
+            "datetime", new DateTimePlaceholderDefinition( ',' ),
+            "enum", new EnumPlaceholderDefinition( ',' )
     );
 
     @Getter

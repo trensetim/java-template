@@ -12,8 +12,8 @@ public class TextPlaceholderDefinition implements PlaceholderDefinition {
     @NonNull
     private final Pattern pattern;
 
-    public TextPlaceholderDefinition( String s ) {
-        pattern = Pattern.compile( "(\\w[^" + s + "]*)" + s + "?(.+)?", Pattern.CASE_INSENSITIVE );
+    public TextPlaceholderDefinition( char s ) {
+        pattern = Pattern.compile( "(\\w[^" + s + "]*)" + s + "\\s*?(.+)?", Pattern.CASE_INSENSITIVE );
     }
 
     @Override

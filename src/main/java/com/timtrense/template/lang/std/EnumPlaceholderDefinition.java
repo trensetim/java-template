@@ -12,8 +12,8 @@ public class EnumPlaceholderDefinition implements PlaceholderDefinition {
     @NonNull
     private final Pattern pattern;
 
-    public EnumPlaceholderDefinition( String s ) {
-        pattern = Pattern.compile( "(\\w[^" + s + "]*)" + s + "?(.+)?", Pattern.CASE_INSENSITIVE );
+    public EnumPlaceholderDefinition( char s ) {
+        pattern = Pattern.compile( "(\\w[^" + s + "]*)" + s + "\\s*?(.+)?", Pattern.CASE_INSENSITIVE );
     }
 
     @Override

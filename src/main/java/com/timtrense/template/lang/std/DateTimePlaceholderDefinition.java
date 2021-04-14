@@ -12,8 +12,8 @@ public class DateTimePlaceholderDefinition implements PlaceholderDefinition {
 
     private final @NonNull Pattern pattern;
 
-    public DateTimePlaceholderDefinition( String s ) {
-        pattern = Pattern.compile( "(\\w[^" + s + "]*)" + s + "?([^" + s + "]+)?" + s + "?(.+)?", Pattern.CASE_INSENSITIVE );
+    public DateTimePlaceholderDefinition( char s ) {
+        pattern = Pattern.compile( "(\\w[^" + s + "]*)" + s + "\\s*?([^" + s + "]+)?" + s + "\\s*?(.+)?", Pattern.CASE_INSENSITIVE );
     }
 
     @Override
