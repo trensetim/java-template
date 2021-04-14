@@ -41,7 +41,7 @@ public class CustomLanguageExample {
         @Override
         public TemplatePart compilePlaceholder( Matcher matchedPlaceholder ) {
             String valueName = matchedPlaceholder.group( 1 );
-            return ( context ) -> context.getOrDefault( valueName, "World" );
+            return context -> context.getOrDefault( valueName, "World" );
         }
     }
 }
