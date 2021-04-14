@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+}
+
+group 'com.timtrense'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testCompile group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.12.RELEASE'
+    testCompile group: 'org.openjdk.jmh', name: 'jmh-core', version: '1.28'
+    testAnnotationProcessor group: 'org.openjdk.jmh', name: 'jmh-generator-annprocess', version: '1.28'
+
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+}
+
+sourceSets {
+    example {
+        java {
+            compileClasspath += sourceSets.main.compileClasspath
+            compileClasspath += sourceSets.main.runtimeClasspath
+            runtimeClasspath += sourceSets.main.runtimeClasspath
+        }
+    }
+}
+
+configurations {
+    exampleCompile.extendsFrom mainCompile
+    exampleRuntime.extendsFrom mainRuntime
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task fatJarSpeedTest(type: Jar, dependsOn: testClasses) {
+    archiveClassifier.set "speedtest"
+    dependsOn compileJava
+    manifest {
+        attributes "Main-Class": "com.timtrense.template.SpeedTest"
+    }
+    from {
+        sourceSets.test.output
+        configurations.compile?.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.testCompile?.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    with jar
+}
+
+artifacts {
+    archives fatJarSpeedTest
+}
