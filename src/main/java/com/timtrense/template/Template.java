@@ -24,7 +24,7 @@ public class Template {
     private final @NonNull TemplatePart[] parts;
 
     /**
-     * Instantiate from a {@link List<TemplatePart>}
+     * Instantiate from a {@link List}
      *
      * @param parts the parts of this template
      */

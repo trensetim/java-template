@@ -15,7 +15,7 @@ import com.timtrense.template.TemplatePart;
  * The default implementation flavor for {@link TemplateLanguage}.
  *
  * The {@link com.timtrense.template.Template template source text} would look something like:
- * <code><pre>
+ * <code>
  *
  *   Hello, $(name, World)!
  *   It is $datetime(time, HH:mm, SOME_DEFAULT) o'clock.
@@ -23,13 +23,13 @@ import com.timtrense.template.TemplatePart;
  *
  *   Here is an escaped \$sequence() that will just
  *   be rendered as is (excluding the first '\' )
- * </pre></code>
+ * </code>
  * Basic values are enclosed using {@code ${variable, default} } notation.
  * There are basic transformations that can be applied, like {@code $datetime }
  * which converts an {@link java.time.temporal.TemporalAccessor} to text using a given format (or ISO-Zoned-Format if omitted).
  * Notice that defaults may always be omitted.
  *
- * Hint: You may either extend from this class or call {@link #getPlaceholderDefinitions()}.{@link Map#put(Object, Object) put(name, PlaceholderDefinition)}
+ * Hint: You may either extend from this class or call {@link #placeholderDefinitions}.{@link Map#put(Object, Object) put(name, PlaceholderDefinition)}
  * to add custom {@link PlaceholderDefinition placeholder types}
  *
  * @author Tim Trense
