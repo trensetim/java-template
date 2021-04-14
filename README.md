@@ -2,6 +2,11 @@
 
 A minimal, easy to use, extreme high performance Template Engine for Java with a minimal footprint
 
+[![Build Status](https://jenkins.timtrense.com/buildStatus/icon?job=java-template)](https://jenkins.timtrense.com/job/java-template/)
+[![Quality Gate Status](https://sonarqube.timtrense.com/api/project_badges/measure?project=com.timtrense%3Ajava-template&metric=alert_status)](https://sonarqube.timtrense.com/dashboard?id=com.timtrense%3Ajava-template)
+
+Current Version: 1.0-SNAPSHOT
+
 # Use Case
 
 With many other templating engines at your hand, why choose this one?
@@ -76,7 +81,9 @@ SpeedTest.test_thymeleaf                   avgt    3  4,860 ± 0,241   s/op
 # Installing
 
 You may get the library artifact from my maven server:
+
 ```xml
+
 <repositories>
     <repository>
         <id>nexus.timtrense.com</id>
@@ -86,13 +93,14 @@ You may get the library artifact from my maven server:
 </repositories>
 
 <dependency>
-    <groupId>com.timtremse</groupId>
-    <artifactId>java-template</artifactId>
-    <version>1.0-SNAPSHOT</version>
+<groupId>com.timtremse</groupId>
+<artifactId>java-template</artifactId>
+<version>1.0-SNAPSHOT</version>
 </dependency>
 ```
 
 Or for gradle:
+
 ```groovy
 repositories {
     maven {
