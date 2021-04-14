@@ -105,6 +105,9 @@ public class Context extends HashMap<String, Object> {
     /**
      * Contract to put in lazily evaluated lambda expressions
      *
+     * @param key as stated by {@link Map#put(Object, Object)}
+     * @param value as stated by {@link Map#put(Object, Object)}
+     * @return as stated by {@link Map#put(Object, Object)}
      * @see Map#put(Object, Object)
      */
     public Object put( @NonNull String key, Callable<?> value ) {
