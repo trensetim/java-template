@@ -24,11 +24,10 @@ hs_err_pid*
 
 # project custom excludes...
 
-# gradle build folder
+# Build system
 build/*
-
-# gradle managed local folder
 .gradle/*
+gradle.properties
 
 # IDE configurations
 .idea/*

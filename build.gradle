@@ -1,5 +1,8 @@
+//file:noinspection GroovyAssignabilityCheck
+
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group 'com.timtrense'
@@ -39,11 +42,11 @@ test {
     useJUnitPlatform()
 }
 
-task fatJarSpeedTest(type: Jar, dependsOn: testClasses) {
-    archiveClassifier.set "speedtest"
+task benchmarkFatJar(type: Jar, dependsOn: testClasses) {
+    archiveClassifier.set 'benchmark-fat'
     dependsOn compileJava
     manifest {
-        attributes "Main-Class": "com.timtrense.template.SpeedTest"
+        attributes 'Main-Class': 'com.timtrense.template.SpeedTest'
     }
     from {
         sourceSets.test.output
@@ -53,6 +56,52 @@ task fatJarSpeedTest(type: Jar, dependsOn: testClasses) {
     with jar
 }
 
+task sourceJar(type: Jar) {
+    archiveClassifier.set 'sources'
+    from sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar) {
+    archiveClassifier.set 'javadoc'
+    from javadoc
+}
+
 artifacts {
-    archives fatJarSpeedTest
+    archives benchmarkFatJar, sourceJar, javadocJar
+}
+
+publishing {
+    publications {
+        'nexus.timtrense.com'(MavenPublication) {
+            artifact javadocJar
+            artifact sourceJar
+            artifact jar
+            pom {
+                name = rootProject.name
+                description = rootProject.description
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = "timtrense"
+                        name = "Tim Trense"
+                        email = "trensetim@gmail.com"
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url 'https://nexus.timtrense.com/repository/com.timtrense-SNAPSHOT/'
+            credentials {
+                username = "$mavenUsername"
+                password = "$mavenPassword"
+            }
+        }
+    }
 }
