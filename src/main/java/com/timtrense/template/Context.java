@@ -58,6 +58,36 @@ public class Context extends HashMap<String, Object> {
     }
 
     /**
+     * Instantiates a Context from the given locale
+     *
+     * @param locale   the users {@link Locale}
+     * @param timeZone the users {@link TimeZone}
+     */
+    public Context( @NonNull Locale locale, @NonNull TimeZone timeZone ) {
+        this.locale = locale;
+        this.timeZone = timeZone;
+    }
+
+    /**
+     * Instantiates a Context from the given locale
+     *
+     * @param timeZone the users {@link TimeZone}
+     */
+    public Context( @NonNull TimeZone timeZone ) {
+        this.timeZone = timeZone;
+    }
+
+
+    /**
+     * Instantiates a Context from the given locale
+     *
+     * @param locale the users {@link Locale}
+     */
+    public Context( @NonNull Locale locale ) {
+        this.locale = locale;
+    }
+
+    /**
      * @return the current {@link ZoneOffset} of the contained {@link #timeZone}
      */
     public ZoneOffset getZoneOffsetNow() {
