@@ -8,8 +8,10 @@ import java.util.Map;
 import java.util.TimeZone;
 import java.util.concurrent.Callable;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.ToString;
 
 /**
  * The context with which a {@link Template} can be resolved to real text.
@@ -20,6 +22,8 @@ import lombok.NonNull;
  * @since 1.0
  */
 @AllArgsConstructor
+@EqualsAndHashCode( callSuper = true )
+@ToString( callSuper = true )
 public class Context extends HashMap<String, Object> {
 
     @Getter
@@ -105,7 +109,7 @@ public class Context extends HashMap<String, Object> {
     /**
      * Contract to put in lazily evaluated lambda expressions
      *
-     * @param key as stated by {@link Map#put(Object, Object)}
+     * @param key   as stated by {@link Map#put(Object, Object)}
      * @param value as stated by {@link Map#put(Object, Object)}
      * @return as stated by {@link Map#put(Object, Object)}
      * @see Map#put(Object, Object)
