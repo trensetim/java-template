@@ -1,0 +1,8 @@
+Benchmark                                  Mode  Cnt  Score   Error  Units
+SpeedTest.test_textformat                  avgt    3  0,589 ± 0,170   s/op
+SpeedTest.test_textformat_compiling        avgt    3  2,264 ± 0,289   s/op
+SpeedTest.test_textformat_compilingInline  avgt    3  3,111 ± 0,428   s/op
+SpeedTest.test_textformat_precompiled      avgt    3  0,313 ± 0,035   s/op
+SpeedTest.test_thymeleaf                   avgt    3  4,876 ± 1,260   s/op
+
+all tests for 5_000_000 template processings
