@@ -2,6 +2,8 @@
 
 A minimal, easy to use, extreme high performance Template Engine for Java with a minimal footprint
 
+[![pipeline status](https://gitlab.timtrense.com/tim/java-template/badges/main/pipeline.svg)](https://gitlab.timtrense.com/tim/java-template/-/commits/main)
+
 Current Version: 1.0
 
 # Use Case
@@ -77,4 +79,11 @@ SpeedTest.test_thymeleaf                   avgt    3  4,860 ± 0,241   s/op
 
 # Installing
 
-You may get the library artifact from this projects package repository
+You may get the library artifact from [this projects package repository](https://gitlab.timtrense.com/tim/java-template/-/packages).
+
+```
+maven {
+  url 'https://gitlab.timtrense.com/api/v4/projects/10/packages/maven'
+}
+implementation 'com.timtrense:java-template:1.0'
+```
