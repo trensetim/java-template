@@ -1,0 +1,10 @@
+build:
+  tags:
+    - docker
+  image: gradle:5.1.1-jdk11
+  script:
+    - gradle jar
+    - gradle publish
+  artifacts:
+    paths:
+      - build/libs/*.jar
