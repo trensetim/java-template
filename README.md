@@ -2,10 +2,7 @@
 
 A minimal, easy to use, extreme high performance Template Engine for Java with a minimal footprint
 
-[![Build Status](https://jenkins.timtrense.com/buildStatus/icon?job=java-template)](https://jenkins.timtrense.com/job/java-template/)
-[![Quality Gate Status](https://sonarqube.timtrense.com/api/project_badges/measure?project=com.timtrense%3Ajava-template&metric=alert_status)](https://sonarqube.timtrense.com/dashboard?id=com.timtrense%3Ajava-template)
-
-Current Version: 1.0-SNAPSHOT
+Current Version: [See my GitLab](https://gitlab.timtrense.com/tim/java-template)
 
 # Use Case
 
@@ -79,35 +76,4 @@ SpeedTest.test_thymeleaf                   avgt    3  4,860 ± 0,241   s/op
 ```
 
 # Installing
-
-You may get the library artifact from my maven server:
-
-```
-<repositories>
-    <repository>
-        <id>nexus.timtrense.com</id>
-        <name>nexus.timtrense.com</name>
-        <url>https://nexus.timtrense.com/repository/com.timtrense-SNAPSHOT</url>
-    </repository>
-</repositories>
-
-<dependency>
-    <groupId>com.timtremse</groupId>
-    <artifactId>java-template</artifactId>
-    <version>1.0-SNAPSHOT</version>
-</dependency>
-```
-
-Or for gradle:
-
-```groovy
-repositories {
-    maven {
-        url 'https://nexus.timtrense.com/repository/com.timtrense-SNAPSHOT'
-    }
-}
-
-dependencies {
-    compile group: 'com.timtrense', name: 'java-template', version: '1.0-SNAPSHOT'
-}
-```
+Please refer to [my GitLab](https://gitlab.timtrense.com/tim/java-template). This repository was migrated there and is discontinued here.
