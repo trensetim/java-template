@@ -1,4 +1,9 @@
+stages:
+  - build
+  - publish-pages
+
 build:
+  stage: build
   tags:
     - docker
   image: gradle:7.3.3-jdk11
@@ -8,3 +13,17 @@ build:
   artifacts:
     paths:
       - build/libs/*.jar
+
+pages:
+  stage: publish-pages
+  tags:
+    - docker
+  image: gradle:7.3.3-jdk11
+  script:
+    - gradle spotbugsMain
+    - mkdir public
+    - cp -r build/reports/spotbugs/main/* public
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 week
