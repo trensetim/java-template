@@ -28,6 +28,7 @@ hs_err_pid*
 build/*
 .gradle/*
 gradle.properties
+out/*
 
 # IDE configurations
 .idea/*
