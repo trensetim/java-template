@@ -20,7 +20,7 @@ pages:
     - docker
   image: gradle:7.3.3-jdk11
   script:
-    - gradle check
+    - gradle report
     - mkdir -p public/reports
     - cp -r build/reports/* public/reports
   artifacts:

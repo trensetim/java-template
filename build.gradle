@@ -157,3 +157,7 @@ jacocoTestReport {
         }
     }
 }
+
+task report {
+    dependsOn test, spotbugsMain, jacocoTestReport, checkstyleMain
+}
