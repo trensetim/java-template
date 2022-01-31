@@ -1,22 +1,32 @@
 package com.timtrense.template.lang.std;
 
+import com.timtrense.template.PlaceholderDefinition;
+import com.timtrense.template.TemplateLanguage;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import com.timtrense.template.PlaceholderDefinition;
-
+/**
+ * A {@link TemplateLanguage} that uses <a href="https://groovy-lang.org/">groovy</a>-like syntax.
+ *
+ * @author Tim Trense
+ * @since 1.0
+ */
 public class GroovyTemplateLanguage extends StandardTemplateLanguage {
 
-    private static final Pattern PLACEHOLDER_WRAPPER = Pattern.compile( "\\$([^{]*)\\{([^}]*)}" );
+    private static final Pattern PLACEHOLDER_WRAPPER = Pattern.compile("\\$([^{]*)\\{([^}]*)}");
     private static final Map<String, PlaceholderDefinition> PLACEHOLDER_DEFINITIONS = Map.of(
-            "", new TextPlaceholderDefinition( ';' ),
-            "datetime", new DateTimePlaceholderDefinition( ';' ),
-            "enum", new EnumPlaceholderDefinition( ';' )
+            "", new TextPlaceholderDefinition(';'),
+            "datetime", new DateTimePlaceholderDefinition(';'),
+            "enum", new EnumPlaceholderDefinition(';')
     );
 
+    /**
+     * @see GroovyTemplateLanguage
+     */
     public GroovyTemplateLanguage() {
-        super( new HashMap<>( PLACEHOLDER_DEFINITIONS ) );
+        super(new HashMap<>(PLACEHOLDER_DEFINITIONS));
     }
 
     @Override

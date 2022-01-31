@@ -1,7 +1,8 @@
 package com.timtrense.template;
 
-import java.util.regex.Matcher;
 import lombok.NonNull;
+
+import java.util.regex.Matcher;
 
 /**
  * The definition (Builder) for {@link TemplatePart template parts} that come from resolving placeholders
@@ -18,7 +19,7 @@ public interface PlaceholderDefinition {
      * @param part the result of {@link #compile(String)}
      * @return a {@link PlaceholderDefinition} that will always return the parameter
      */
-    static PlaceholderDefinition of( TemplatePart part ) {
+    static PlaceholderDefinition of(TemplatePart part) {
         return t -> part;
     }
 
@@ -34,5 +35,5 @@ public interface PlaceholderDefinition {
      * @return an object representation of that placeholder that, when invoked within a {@link Context},
      * will give the actual value for it
      */
-    TemplatePart compile( @NonNull String placeholderText );
+    TemplatePart compile(@NonNull String placeholderText);
 }

@@ -1,14 +1,14 @@
 package com.timtrense.template;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.regex.Matcher;
+import com.timtrense.template.lang.std.StandardTemplateLanguage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-import com.timtrense.template.lang.std.StandardTemplateLanguage;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.regex.Matcher;
 
 /**
  * The Builder Class for {@link Template templates}.
@@ -50,8 +50,8 @@ public class TemplateBuilder {
      * @param templateText the template source text
      * @return the parsed template, not null
      */
-    public static Template build( @NonNull String templateText ) {
-        return DEFAULT_INSTANCE.buildTemplate( templateText );
+    public static Template build(@NonNull String templateText) {
+        return DEFAULT_INSTANCE.buildTemplate(templateText);
     }
 
     /**
@@ -61,56 +61,55 @@ public class TemplateBuilder {
      * @param templateText the template source text
      * @return the parsed template, not null
      */
-    public Template buildTemplate( @NonNull String templateText ) {
+    public Template buildTemplate(@NonNull String templateText) {
         List<TemplatePart> parts = new LinkedList<>();
-        Matcher placeholderMatcher = templateLanguage.getPlaceholderWrapperPattern().matcher( templateText );
+        Matcher placeholderMatcher = templateLanguage.getPlaceholderWrapperPattern().matcher(templateText);
         char escapeSequence = templateLanguage.getEscapeSequence();
 
         int searchPosition = 0;
         int templateTextLength = templateText.length();
-        while ( searchPosition < templateTextLength ) {
-            if ( !placeholderMatcher.find( searchPosition ) ) {
+        while (searchPosition < templateTextLength) {
+            if (!placeholderMatcher.find(searchPosition)) {
                 // just a trailing TextPart remaining
                 break;
             }
 
-            TemplatePart nextPart = templateLanguage.compilePlaceholder( placeholderMatcher );
+            TemplatePart nextPart = templateLanguage.compilePlaceholder(placeholderMatcher);
             // nextPart == null : means could not compile
 
-            if ( nextPart == null && failOnInvalidPlaceholder ) {
+            if (nextPart == null && failOnInvalidPlaceholder) {
                 int position = placeholderMatcher.start();
                 throw new TemplateFormatException(
                         "Could not compile placeholder on template on \"" + templateText + "\" at " + position,
-                        templateText, position );
+                        templateText, position);
             }
 
             int start = placeholderMatcher.start();
 
-            if ( templateText.charAt( start - 1 ) == escapeSequence || nextPart == null ) {
+            if (templateText.charAt(start - 1) == escapeSequence || nextPart == null) {
                 // add text part between last placeholder and escape sequence
-                int endOfBetween = ( nextPart != null ) ? ( start - 1 ) : start;
-                parts.add( new TextPart( templateText.substring( searchPosition, endOfBetween ) ) );
+                int endOfBetween = (nextPart != null) ? (start - 1) : start;
+                parts.add(new TextPart(templateText.substring(searchPosition, endOfBetween)));
 
                 // add text part containing the matched text
                 searchPosition = placeholderMatcher.end();
-                parts.add( new TextPart( templateText.substring( start, searchPosition ) ) );
+                parts.add(new TextPart(templateText.substring(start, searchPosition)));
                 continue;
-            }
-            else if ( start > searchPosition ) {
+            } else if (start > searchPosition) {
                 // add text part between last placeholder and current placeholder
-                parts.add( new TextPart( templateText.substring( searchPosition, start ) ) );
+                parts.add(new TextPart(templateText.substring(searchPosition, start)));
             }
 
-            parts.add( nextPart );
+            parts.add(nextPart);
 
             searchPosition = placeholderMatcher.end();
         }
 
-        if ( searchPosition < templateTextLength ) {
+        if (searchPosition < templateTextLength) {
             // add remaining part
-            parts.add( new TextPart( templateText.substring( searchPosition ) ) );
+            parts.add(new TextPart(templateText.substring(searchPosition)));
         }
 
-        return new Template( parts );
+        return new Template(parts);
     }
 }

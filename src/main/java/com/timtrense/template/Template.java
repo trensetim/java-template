@@ -1,5 +1,9 @@
 package com.timtrense.template;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NonNull;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
@@ -7,9 +11,6 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NonNull;
 
 /**
  * A compiled text containing placeholders that are to be replaced by actual values
@@ -28,8 +29,8 @@ public class Template {
      *
      * @param parts the parts of this template
      */
-    public Template( @NonNull List<@NonNull TemplatePart> parts ) {
-        this.parts = parts.toArray( new TemplatePart[0] );
+    public Template(@NonNull List<@NonNull TemplatePart> parts) {
+        this.parts = parts.toArray(new TemplatePart[0]);
     }
 
 
@@ -41,9 +42,9 @@ public class Template {
      * @param context      all placeholder values to put in combined with a locale setting
      * @return the actual text
      */
-    public static String process( @NonNull String templateText, @NonNull Context context ) {
-        Template template = TemplateBuilder.build( templateText );
-        return template.process( context );
+    public static String process(@NonNull String templateText, @NonNull Context context) {
+        Template template = TemplateBuilder.build(templateText);
+        return template.process(context);
     }
 
     /**
@@ -54,9 +55,9 @@ public class Template {
      * @param values       the placeholder values to put in
      * @return the actual text
      */
-    public static String process( @NonNull String templateText, @NonNull Map<@NonNull String, Object> values ) {
-        Template template = TemplateBuilder.build( templateText );
-        return template.process( values );
+    public static String process(@NonNull String templateText, @NonNull Map<@NonNull String, Object> values) {
+        Template template = TemplateBuilder.build(templateText);
+        return template.process(values);
     }
 
     /**
@@ -65,51 +66,87 @@ public class Template {
      * @param context the {@link Context} containing the necessary information to resolve the placeholders
      * @return the actual resolved text
      */
-    public String process( Context context ) {
+    public String process(Context context) {
         StringBuilder builder = new StringBuilder();
-        appendTo( context, builder );
+        appendTo(context, builder);
         return builder.toString();
     }
 
-    public void process( Context context, Consumer<Object> consumer ) {
-        for ( TemplatePart p : parts ) {
-            p.process( context, consumer );
+    /**
+     * Overloading for {@link #process(Context)}
+     * @param context the context to process all {@link TemplatePart TemplateParts}
+     * @param consumer destination for the output of {@link TemplatePart#process(Context)}
+     */
+    public void process(Context context, Consumer<Object> consumer) {
+        for (TemplatePart p : parts) {
+            p.process(context, consumer);
         }
     }
 
-    public void appendTo( Context context, StringBuilder appendable ) {
-        for ( TemplatePart p : parts ) {
-            p.append( context, appendable );
+    /**
+     * Overloading for {@link #process(Context)}
+     * @param context the context to process all {@link TemplatePart TemplateParts}
+     * @param appendable destination for the output of {@link TemplatePart#process(Context)}
+     */
+    public void appendTo(Context context, StringBuilder appendable) {
+        for (TemplatePart p : parts) {
+            p.append(context, appendable);
         }
     }
 
-    public void appendTo( Context context, StringBuffer appendable ) {
-        for ( TemplatePart p : parts ) {
-            p.append( context, appendable );
+    /**
+     * Overloading for {@link #process(Context)}
+     * @param context the context to process all {@link TemplatePart TemplateParts}
+     * @param appendable destination for the output of {@link TemplatePart#process(Context)}
+     */
+    public void appendTo(Context context, StringBuffer appendable) {
+        for (TemplatePart p : parts) {
+            p.append(context, appendable);
         }
     }
 
-    public void appendTo( Context context, Appendable appendable ) throws IOException {
-        for ( TemplatePart p : parts ) {
-            p.append( context, appendable );
+    /**
+     * Overloading for {@link #process(Context)}
+     * @param context the context to process all {@link TemplatePart TemplateParts}
+     * @param appendable destination for the output of {@link TemplatePart#process(Context)}
+     */
+    public void appendTo(Context context, Appendable appendable) throws IOException {
+        for (TemplatePart p : parts) {
+            p.append(context, appendable);
         }
     }
 
-    public void writeTo( Context context, Writer writer ) throws IOException {
-        for ( TemplatePart p : parts ) {
-            p.writeTo( context, writer );
+    /**
+     * Overloading for {@link #process(Context)}
+     * @param context the context to process all {@link TemplatePart TemplateParts}
+     * @param writer destination for the output of {@link TemplatePart#process(Context)}
+     */
+    public void writeTo(Context context, Writer writer) throws IOException {
+        for (TemplatePart p : parts) {
+            p.writeTo(context, writer);
         }
     }
 
-    public void writeTo( Context context, OutputStream outputStream ) throws IOException {
-        for ( TemplatePart p : parts ) {
-            p.writeTo( context, outputStream );
+    /**
+     * Overloading for {@link #process(Context)}
+     * @param context the context to process all {@link TemplatePart TemplateParts}
+     * @param outputStream destination for the output of {@link TemplatePart#process(Context)}
+     */
+    public void writeTo(Context context, OutputStream outputStream) throws IOException {
+        for (TemplatePart p : parts) {
+            p.writeTo(context, outputStream);
         }
     }
 
-    public void writeTo( Context context, OutputStream outputStream, Charset charset ) throws IOException {
-        for ( TemplatePart p : parts ) {
-            p.writeTo( context, outputStream, charset );
+    /**
+     * Overloading for {@link #process(Context)}
+     * @param context the context to process all {@link TemplatePart TemplateParts}
+     * @param outputStream destination for the output of {@link TemplatePart#process(Context)}
+     * @param charset the charset to encode the output of {@link TemplatePart#process(Context)} with
+     */
+    public void writeTo(Context context, OutputStream outputStream, Charset charset) throws IOException {
+        for (TemplatePart p : parts) {
+            p.writeTo(context, outputStream, charset);
         }
     }
 
@@ -119,8 +156,8 @@ public class Template {
      * @param values the values of a {@link Context} (constructed with otherwise default settings) containing the necessary information to resolve the placeholders
      * @return the actual resolved text
      */
-    public String process( @NonNull Map<@NonNull String, Object> values ) {
-        Context context = new Context( values );
-        return process( context );
+    public String process(@NonNull Map<@NonNull String, Object> values) {
+        Context context = new Context(values);
+        return process(context);
     }
 }

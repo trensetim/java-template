@@ -1,5 +1,11 @@
 package com.timtrense.template;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.ToString;
+
 import java.time.Instant;
 import java.time.ZoneOffset;
 import java.util.HashMap;
@@ -7,11 +13,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 import java.util.concurrent.Callable;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.ToString;
 
 /**
  * The context with which a {@link Template} can be resolved to real text.
@@ -22,8 +23,8 @@ import lombok.ToString;
  * @since 1.0
  */
 @AllArgsConstructor
-@EqualsAndHashCode( callSuper = true )
-@ToString( callSuper = true )
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class Context extends HashMap<String, Object> {
 
     @Getter
@@ -44,8 +45,8 @@ public class Context extends HashMap<String, Object> {
      *
      * @param values {@link Map} of placeholder keys (names) to values that will be copied
      */
-    public Context( @NonNull Map<@NonNull String, Object> values ) {
-        super( values );
+    public Context(@NonNull Map<@NonNull String, Object> values) {
+        super(values);
     }
 
     /**
@@ -55,8 +56,8 @@ public class Context extends HashMap<String, Object> {
      * @param locale   the users {@link Locale}
      * @param timeZone the users {@link TimeZone}
      */
-    public Context( @NonNull Map<@NonNull String, Object> values, @NonNull Locale locale, @NonNull TimeZone timeZone ) {
-        super( values );
+    public Context(@NonNull Map<@NonNull String, Object> values, @NonNull Locale locale, @NonNull TimeZone timeZone) {
+        super(values);
         this.locale = locale;
         this.timeZone = timeZone;
     }
@@ -67,7 +68,7 @@ public class Context extends HashMap<String, Object> {
      * @param locale   the users {@link Locale}
      * @param timeZone the users {@link TimeZone}
      */
-    public Context( @NonNull Locale locale, @NonNull TimeZone timeZone ) {
+    public Context(@NonNull Locale locale, @NonNull TimeZone timeZone) {
         this.locale = locale;
         this.timeZone = timeZone;
     }
@@ -77,7 +78,7 @@ public class Context extends HashMap<String, Object> {
      *
      * @param timeZone the users {@link TimeZone}
      */
-    public Context( @NonNull TimeZone timeZone ) {
+    public Context(@NonNull TimeZone timeZone) {
         this.timeZone = timeZone;
     }
 
@@ -87,7 +88,7 @@ public class Context extends HashMap<String, Object> {
      *
      * @param locale the users {@link Locale}
      */
-    public Context( @NonNull Locale locale ) {
+    public Context(@NonNull Locale locale) {
         this.locale = locale;
     }
 
@@ -95,15 +96,15 @@ public class Context extends HashMap<String, Object> {
      * @return the current {@link ZoneOffset} of the contained {@link #timeZone}
      */
     public ZoneOffset getZoneOffsetNow() {
-        return getZoneOffsetAt( Instant.now() );
+        return getZoneOffsetAt(Instant.now());
     }
 
     /**
      * @param instant the time at which to resolve the offset
      * @return the {@link ZoneOffset} of the contained {@link #timeZone} at specified time
      */
-    public ZoneOffset getZoneOffsetAt( @NonNull Instant instant ) {
-        return timeZone.toZoneId().getRules().getOffset( instant );
+    public ZoneOffset getZoneOffsetAt(@NonNull Instant instant) {
+        return timeZone.toZoneId().getRules().getOffset(instant);
     }
 
     /**
@@ -114,7 +115,7 @@ public class Context extends HashMap<String, Object> {
      * @return as stated by {@link Map#put(Object, Object)}
      * @see Map#put(Object, Object)
      */
-    public Object put( @NonNull String key, Callable<?> value ) {
-        return super.put( key, value );
+    public Object put(@NonNull String key, Callable<?> value) {
+        return super.put(key, value);
     }
 }

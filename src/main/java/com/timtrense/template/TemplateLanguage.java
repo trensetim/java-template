@@ -25,7 +25,7 @@ public interface TemplateLanguage {
     /**
      * called when there is a found match to {@link #getPlaceholderWrapperPattern()} that should be compiled to a
      * {@link TemplatePart placeholder part}.
-     *
+     * <p>
      * Implementations MUST NOT alter the parameter matchedPlaceholder.
      * Implementations MUST NOT have side-effects nor state.
      *
@@ -33,5 +33,5 @@ public interface TemplateLanguage {
      * @return the compiled {@link TemplatePart} or null if the contents of the matched region do not express a valid placeholder
      * (which will not lead to an error but instead treat the indicated region as regular {@link TextPart text}
      */
-    TemplatePart compilePlaceholder( Matcher matchedPlaceholder );
+    TemplatePart compilePlaceholder(Matcher matchedPlaceholder);
 }

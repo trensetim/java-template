@@ -20,7 +20,7 @@ public class TextPart implements TemplatePart {
     private @NonNull String text;
 
     @Override
-    public String process( Context context ) {
+    public String process(Context context) {
         return text;
     }
 }
