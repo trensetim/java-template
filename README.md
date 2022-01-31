@@ -65,7 +65,7 @@ String lazyText=helloWorldTemplate.process(context);
 
 # Benchmarks
 
-Some benchmarking results can be found in benchmark.txt and reproduced from src/test/.../SpeedTest using JMH. Here is the key part:
+Some benchmarking results can be found in benchmark.txt and reproduced from src/benchmark/.../SpeedTest using JMH. Here is the key part:
 
 ```
 Each test case processes a hello world template (as seen above) 5 million times.

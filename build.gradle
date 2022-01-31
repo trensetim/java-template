@@ -14,17 +14,6 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
-    testImplementation group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.12.RELEASE'
-    testImplementation group: 'org.openjdk.jmh', name: 'jmh-core', version: '1.28'
-    testAnnotationProcessor group: 'org.openjdk.jmh', name: 'jmh-generator-annprocess', version: '1.28'
-
-    implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
-    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
-}
-
 sourceSets {
     example {
         java {
@@ -33,6 +22,25 @@ sourceSets {
             runtimeClasspath += sourceSets.main.runtimeClasspath
         }
     }
+    benchmark {
+        java {
+            compileClasspath += sourceSets.main.compileClasspath
+            compileClasspath += sourceSets.main.runtimeClasspath
+            runtimeClasspath += sourceSets.main.runtimeClasspath
+        }
+    }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    benchmarkImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    benchmarkImplementation group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.12.RELEASE'
+    benchmarkImplementation group: 'org.openjdk.jmh', name: 'jmh-core', version: '1.28'
+    benchmarkAnnotationProcessor group: 'org.openjdk.jmh', name: 'jmh-generator-annprocess', version: '1.28'
+
+    implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
 }
 
 configurations {
