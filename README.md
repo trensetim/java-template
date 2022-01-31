@@ -87,3 +87,10 @@ maven {
 }
 implementation 'com.timtrense:java-template:1.0'
 ```
+
+# Project insights
+
+- [Checkstyle Report](https://tim.gitlab-pages.timtrense.com/java-template/reports/checkstyle/main.html)
+- [Spotbugs Report](https://tim.gitlab-pages.timtrense.com/java-template/reports/spotbugs/main.html)
+- [JaCoCo Report](https://tim.gitlab-pages.timtrense.com/java-template/reports/jacoco/index.html)
+- [Gradle Test Report](https://tim.gitlab-pages.timtrense.com/java-template/reports/tests/test/index.html)

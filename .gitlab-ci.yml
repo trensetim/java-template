@@ -20,9 +20,9 @@ pages:
     - docker
   image: gradle:7.3.3-jdk11
   script:
-    - gradle spotbugsMain
-    - mkdir public
-    - cp -r build/reports/spotbugs/main/* public
+    - gradle check
+    - mkdir -p public/reports
+    - cp -r build/reports/* public/reports
   artifacts:
     paths:
       - public
