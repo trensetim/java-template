@@ -80,8 +80,8 @@ public class TemplateBuilder {
             if (nextPart == null && failOnInvalidPlaceholder) {
                 int position = placeholderMatcher.start();
                 throw new TemplateFormatException(
-                    "Could not compile placeholder on template on \"" + templateText + "\" at " + position,
-                    templateText, position);
+                        "Could not compile placeholder on template on \"" + templateText + "\" at " + position,
+                        templateText, position);
             }
 
             int start = placeholderMatcher.start();
