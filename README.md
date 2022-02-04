@@ -27,7 +27,7 @@ With many other templating engines at your hand, why choose this one?
 
 You can both use an inlined syntax, giving you adhoc-templating:
 
-```
+```java
 Template.process(
     "Hello, $(name, World)!",
     Map.of("name","Tim")
@@ -36,7 +36,7 @@ Template.process(
 
 Or you may want to build a `Template` before using it multiple times (which gives you a significant performance boost).
 
-```
+```java
 Template helloWorldTemplate=TemplateBuilder.build("I am precompiled but executed at $datetime(time, yyyy-MM-dd, some unknown time)!");
 String resultNow=helloWorldTemplate.process(Map.of("time",ZonedDateTime.now()));
 // ... take some coffee
@@ -57,7 +57,7 @@ For examples on that, see src/example/.../CustomPlaceholderExample
 
 If you like to customize the locale settings, you may choose a slightly more verbose way (showing you lazy evaluation here too).
 
-```
+```java
 Context context=new Context(Locale.GERMANY,TimeZone.getTimeZone(ZoneId.of("Europe/Berlin")));
 context.put("name","lazy Tim"::toString);
 String lazyText=helloWorldTemplate.process(context);
@@ -81,7 +81,7 @@ SpeedTest.test_thymeleaf                   avgt    3  4,860 ± 0,241   s/op
 
 You may get the library artifact from [this projects package repository](https://gitlab.timtrense.com/tim/java-template/-/packages).
 
-```
+```groovy
 maven {
   url 'https://gitlab.timtrense.com/api/v4/projects/10/packages/maven'
 }
