@@ -1,0 +1,18 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/misc.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# Embedded tools
+/gradle.xml
+/jarRepositories.xml
+/uiDesigner.xml
+/compiler.xml
+/codeStyles
+/modules
+/checkstyleidea-libs

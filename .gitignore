@@ -29,6 +29,3 @@ build/*
 .gradle/*
 gradle.properties
 out/*
-
-# IDE configurations
-.idea/*
