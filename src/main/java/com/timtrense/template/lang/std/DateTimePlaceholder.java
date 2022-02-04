@@ -12,7 +12,7 @@ import java.util.concurrent.Callable;
 
 /**
  * A placeholder for injecting a date and/or time value, formatted according to an {@link DateTimeFormatter}.
- *
+ * <p>
  * The actual value must be a {@link TemporalAccessor} and must be present in the {@link Context} under the {@link #name}.
  * The actual value may be a {@link Callable} returning a {@link TemporalAccessor}.
  * If the value is not present or the {@link Callable} returns {@code null} then the {@link #defaultValue} will

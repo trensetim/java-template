@@ -1,29 +1,29 @@
 package com.timtrense.template.example;
 
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import com.timtrense.template.Template;
 import com.timtrense.template.TemplateBuilder;
 import com.timtrense.template.TemplateLanguage;
 import com.timtrense.template.TemplatePart;
 
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CustomLanguageExample {
 
-    public static void main( String[] args ) {
+    public static void main(String[] args) {
         TemplateBuilder builder = new TemplateBuilder();
-        builder.setTemplateLanguage( new MyLanguage() );
-        Template helloWorldTemplate = builder.buildTemplate( "Hello, [name]!" );
+        builder.setTemplateLanguage(new MyLanguage());
+        Template helloWorldTemplate = builder.buildTemplate("Hello, [name]!");
 
-        String text = helloWorldTemplate.process( Map.of( "name", "Tim" ) );
-        System.out.println( text );
+        String text = helloWorldTemplate.process(Map.of("name", "Tim"));
+        System.out.println(text);
 
-        String worldText = builder.buildTemplate( "Hello, [name]!" ).process( Map.of( "unknown_name", "Tim" ) );
-        System.out.println( worldText );
+        String worldText = builder.buildTemplate("Hello, [name]!").process(Map.of("unknown_name", "Tim"));
+        System.out.println(worldText);
 
-        String escapedText = builder.buildTemplate( "Hello, #[escaped]!" ).process( Map.of( "escaped", "Tim" ) );
-        System.out.println( escapedText );
+        String escapedText = builder.buildTemplate("Hello, #[escaped]!").process(Map.of("escaped", "Tim"));
+        System.out.println(escapedText);
     }
 
     static class MyLanguage implements TemplateLanguage {
@@ -35,13 +35,13 @@ public class CustomLanguageExample {
 
         @Override
         public Pattern getPlaceholderWrapperPattern() {
-            return Pattern.compile( "\\[([^]]+)]" );
+            return Pattern.compile("\\[([^]]+)]");
         }
 
         @Override
-        public TemplatePart compilePlaceholder( Matcher matchedPlaceholder ) {
-            String valueName = matchedPlaceholder.group( 1 );
-            return context -> context.getOrDefault( valueName, "World" );
+        public TemplatePart compilePlaceholder(Matcher matchedPlaceholder) {
+            String valueName = matchedPlaceholder.group(1);
+            return context -> context.getOrDefault(valueName, "World");
         }
     }
 }

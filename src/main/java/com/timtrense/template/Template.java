@@ -74,7 +74,8 @@ public class Template {
 
     /**
      * Overloading for {@link #process(Context)}
-     * @param context the context to process all {@link TemplatePart TemplateParts}
+     *
+     * @param context  the context to process all {@link TemplatePart TemplateParts}
      * @param consumer destination for the output of {@link TemplatePart#process(Context)}
      */
     public void process(Context context, Consumer<Object> consumer) {
@@ -85,7 +86,8 @@ public class Template {
 
     /**
      * Overloading for {@link #process(Context)}
-     * @param context the context to process all {@link TemplatePart TemplateParts}
+     *
+     * @param context    the context to process all {@link TemplatePart TemplateParts}
      * @param appendable destination for the output of {@link TemplatePart#process(Context)}
      */
     public void appendTo(Context context, StringBuilder appendable) {
@@ -96,7 +98,8 @@ public class Template {
 
     /**
      * Overloading for {@link #process(Context)}
-     * @param context the context to process all {@link TemplatePart TemplateParts}
+     *
+     * @param context    the context to process all {@link TemplatePart TemplateParts}
      * @param appendable destination for the output of {@link TemplatePart#process(Context)}
      */
     public void appendTo(Context context, StringBuffer appendable) {
@@ -107,7 +110,8 @@ public class Template {
 
     /**
      * Overloading for {@link #process(Context)}
-     * @param context the context to process all {@link TemplatePart TemplateParts}
+     *
+     * @param context    the context to process all {@link TemplatePart TemplateParts}
      * @param appendable destination for the output of {@link TemplatePart#process(Context)}
      */
     public void appendTo(Context context, Appendable appendable) throws IOException {
@@ -118,8 +122,9 @@ public class Template {
 
     /**
      * Overloading for {@link #process(Context)}
+     *
      * @param context the context to process all {@link TemplatePart TemplateParts}
-     * @param writer destination for the output of {@link TemplatePart#process(Context)}
+     * @param writer  destination for the output of {@link TemplatePart#process(Context)}
      */
     public void writeTo(Context context, Writer writer) throws IOException {
         for (TemplatePart p : parts) {
@@ -129,7 +134,8 @@ public class Template {
 
     /**
      * Overloading for {@link #process(Context)}
-     * @param context the context to process all {@link TemplatePart TemplateParts}
+     *
+     * @param context      the context to process all {@link TemplatePart TemplateParts}
      * @param outputStream destination for the output of {@link TemplatePart#process(Context)}
      */
     public void writeTo(Context context, OutputStream outputStream) throws IOException {
@@ -140,9 +146,10 @@ public class Template {
 
     /**
      * Overloading for {@link #process(Context)}
-     * @param context the context to process all {@link TemplatePart TemplateParts}
+     *
+     * @param context      the context to process all {@link TemplatePart TemplateParts}
      * @param outputStream destination for the output of {@link TemplatePart#process(Context)}
-     * @param charset the charset to encode the output of {@link TemplatePart#process(Context)} with
+     * @param charset      the charset to encode the output of {@link TemplatePart#process(Context)} with
      */
     public void writeTo(Context context, OutputStream outputStream, Charset charset) throws IOException {
         for (TemplatePart p : parts) {

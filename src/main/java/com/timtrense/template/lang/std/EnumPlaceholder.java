@@ -11,7 +11,7 @@ import java.util.concurrent.Callable;
 
 /**
  * A placeholder for injecting the name of a enum constant.
- *
+ * <p>
  * The actual value must be a {@link Enum} and must be present in the {@link Context} under the {@link #name}.
  * The actual value may be a {@link Callable} returning a {@link Enum}.
  * If the value is not present or the {@link Callable} returns {@code null} then the {@link #defaultValue} will
