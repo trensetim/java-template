@@ -40,6 +40,9 @@ dependencies {
     benchmarkImplementation group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.12.RELEASE'
     benchmarkImplementation group: 'org.openjdk.jmh', name: 'jmh-core', version: '1.28'
     benchmarkAnnotationProcessor group: 'org.openjdk.jmh', name: 'jmh-generator-annprocess', version: '1.28'
+    spotbugsPlugins group: 'com.h3xstream.findsecbugs', name: 'findsecbugs-plugin', version: '1.11.0'
+    spotbugsPlugins group: 'com.mebigfatguy.sb-contrib', name: 'sb-contrib', version: '7.4.7'
+    implementation group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '4.5.3'
 
     implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
