@@ -1,5 +1,6 @@
 package com.timtrense.template;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
@@ -66,6 +67,7 @@ public class Template {
      * @param context the {@link Context} containing the necessary information to resolve the placeholders
      * @return the actual resolved text
      */
+    @SuppressFBWarnings("MOM_MISLEADING_OVERLOAD_MODEL")
     public String process(Context context) {
         StringBuilder builder = new StringBuilder();
         appendTo(context, builder);
