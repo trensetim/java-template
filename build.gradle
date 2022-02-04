@@ -110,6 +110,7 @@ spotbugs {
     ignoreFailures = true
     reportsDir = file("$buildDir/spotbugs")
     onlyAnalyze = ['com.timtrense.template.*']
+    excludeFilter = file('spotbugs-exclude.xml')
 }
 spotbugsMain {
     reports {

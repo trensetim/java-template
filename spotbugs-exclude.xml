@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+
+    <Match>
+        <!-- Benchmarks need not be bugfree -->
+        <Package name="io.undertow.benchmarks.generated"/>
+    </Match>
+
+    <Match>
+        <!-- Lomboks auto-generated hashCode -->
+        <Method name="hashCode" />
+        <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN"/>
+    </Match>
+
+</FindBugsFilter>
