@@ -2,6 +2,7 @@ package com.timtrense.template;
 
 import lombok.NonNull;
 
+import javax.annotation.concurrent.Immutable;
 import java.util.regex.Matcher;
 
 /**
@@ -10,6 +11,7 @@ import java.util.regex.Matcher;
  * @author Tim Trense
  * @since 1.0
  */
+@Immutable
 public interface PlaceholderDefinition {
 
     /**
