@@ -4,8 +4,6 @@ A minimal, easy to use, extreme high performance Template Engine for Java with a
 
 [![pipeline status](https://gitlab.timtrense.com/tim/java-template/badges/main/pipeline.svg)](https://gitlab.timtrense.com/tim/java-template/-/commits/main)
 
-Current Version: 1.0
-
 # Use Case
 
 With many other templating engines at your hand, why choose this one?
