@@ -48,7 +48,10 @@ public class StandardTemplateLanguage implements TemplateLanguage {
     /**
      * all known placeholders.
      * The getter returns a mutable reference to the internal state to allow for easy "inline" extension of
-     * the standard language used in ones application
+     * the standard language used in one's application.
+     * While this allows one to tamper with the language after creation, it lowers the learning curve for
+     * this library. If one prefers an immutable variant of a language, one may
+     * use {@link ImmutableStandardTemplateLanguage} .
      */
     @Getter
     @SuppressFBWarnings("EI_EXPOSE_REP")
