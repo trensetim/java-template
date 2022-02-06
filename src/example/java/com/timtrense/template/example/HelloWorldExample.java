@@ -7,7 +7,6 @@ import com.timtrense.template.TemplateBuilder;
 import java.time.ZoneId;
 import java.util.Locale;
 import java.util.Map;
-import java.util.TimeZone;
 
 public class HelloWorldExample {
 
@@ -18,7 +17,7 @@ public class HelloWorldExample {
         String text = helloWorldTemplate.process(Map.of("name", "Tim"));
         System.out.println(text);
 
-        Context context = new Context(Locale.GERMANY, TimeZone.getTimeZone(ZoneId.of("Europe/Berlin")));
+        Context context = new Context(Locale.GERMANY, ZoneId.of("Europe/Berlin"));
         context.put("name", "lazy Tim"::toString);
         String lazyText = helloWorldTemplate.process(context);
         System.out.println(lazyText);

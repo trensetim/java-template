@@ -7,6 +7,7 @@ import lombok.NonNull;
 import lombok.ToString;
 
 import java.time.Instant;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.HashMap;
 import java.util.Locale;
@@ -29,7 +30,7 @@ public class Context extends HashMap<@NonNull String, Object> {
 
     @Getter
     @NonNull
-    private TimeZone timeZone = TimeZone.getDefault();
+    private ZoneId zoneId = ZoneOffset.UTC;
     @Getter
     @NonNull
     private Locale locale = Locale.getDefault();
@@ -54,32 +55,32 @@ public class Context extends HashMap<@NonNull String, Object> {
      *
      * @param values   {@link Map} of placeholder keys (names) to values that will be copied
      * @param locale   the users {@link Locale}
-     * @param timeZone the users {@link TimeZone}
+     * @param zoneId the users {@link ZoneId time zone}
      */
-    public Context(Map<@NonNull String, Object> values, @NonNull Locale locale, @NonNull TimeZone timeZone) {
+    public Context(Map<@NonNull String, Object> values, @NonNull Locale locale, @NonNull ZoneId zoneId) {
         super(values);
         this.locale = locale;
-        this.timeZone = timeZone;
+        this.zoneId = zoneId;
     }
 
     /**
      * Instantiates a Context from the given locale
      *
      * @param locale   the users {@link Locale}
-     * @param timeZone the users {@link TimeZone}
+     * @param zoneId the users {@link ZoneId time zone}
      */
-    public Context(@NonNull Locale locale, @NonNull TimeZone timeZone) {
+    public Context(@NonNull Locale locale, @NonNull ZoneId zoneId) {
         this.locale = locale;
-        this.timeZone = timeZone;
+        this.zoneId = zoneId;
     }
 
     /**
      * Instantiates a Context from the given locale
      *
-     * @param timeZone the users {@link TimeZone}
+     * @param zoneId the users {@link ZoneId time zone}
      */
-    public Context(@NonNull TimeZone timeZone) {
-        this.timeZone = timeZone;
+    public Context(@NonNull ZoneId zoneId) {
+        this.zoneId = zoneId;
     }
 
 
@@ -93,7 +94,7 @@ public class Context extends HashMap<@NonNull String, Object> {
     }
 
     /**
-     * @return the current {@link ZoneOffset} of the contained {@link #timeZone}
+     * @return the current {@link ZoneOffset} of the contained {@link #zoneId}
      */
     public ZoneOffset getZoneOffsetNow() {
         return getZoneOffsetAt(Instant.now());
@@ -101,10 +102,10 @@ public class Context extends HashMap<@NonNull String, Object> {
 
     /**
      * @param instant the time at which to resolve the offset
-     * @return the {@link ZoneOffset} of the contained {@link #timeZone} at specified time
+     * @return the {@link ZoneOffset} of the contained {@link #zoneId} at specified time
      */
     public ZoneOffset getZoneOffsetAt(@NonNull Instant instant) {
-        return timeZone.toZoneId().getRules().getOffset(instant);
+        return zoneId.getRules().getOffset(instant);
     }
 
     /**

@@ -5,6 +5,8 @@ import com.timtrense.template.lang.std.TextPlaceholder;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
@@ -35,6 +37,20 @@ public class TemplateTest {
         String result = template.process(Map.of("time", now));
 
         assertEquals("Hello, 2021-01-01!", result);
+    }
+
+    @Test
+    public void apply__helloZonedDateTime__helloZonedTime() {
+        TemplatePart hello = new TextPart("Hello, ");
+        TemplatePart world = new DateTimePlaceholder("time", DateTimeFormatter.ofPattern("HH:mm VV"), "MY_DEFAULT_VALUE");
+        TemplatePart exclamation = new TextPart("!");
+        Template template = new Template(new TemplatePart[]{hello, world, exclamation});
+
+        LocalDateTime localNow = LocalDateTime.of(2021, 1, 1, 12, 30);
+        ZonedDateTime now = ZonedDateTime.of(localNow, ZoneId.of("Europe/Berlin"));
+        String result = template.process(Map.of("time", now));
+
+        assertEquals("Hello, 12:30 Europe/Berlin!", result);
     }
 
     @Test
