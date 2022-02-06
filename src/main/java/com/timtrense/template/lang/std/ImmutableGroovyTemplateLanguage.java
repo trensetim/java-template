@@ -1,13 +1,10 @@
 package com.timtrense.template.lang.std;
 
 import com.timtrense.template.PlaceholderDefinition;
-import com.timtrense.template.TemplateLanguage;
 import lombok.NonNull;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 /**
  * The default immutable variant of {@link GroovyTemplateLanguage}
