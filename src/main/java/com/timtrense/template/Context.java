@@ -25,7 +25,7 @@ import java.util.concurrent.Callable;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class Context extends HashMap<String, Object> {
+public class Context extends HashMap<@NonNull String, Object> {
 
     @Getter
     @NonNull
@@ -45,7 +45,7 @@ public class Context extends HashMap<String, Object> {
      *
      * @param values {@link Map} of placeholder keys (names) to values that will be copied
      */
-    public Context(@NonNull Map<@NonNull String, Object> values) {
+    public Context(Map<@NonNull String, Object> values) {
         super(values);
     }
 
@@ -56,7 +56,7 @@ public class Context extends HashMap<String, Object> {
      * @param locale   the users {@link Locale}
      * @param timeZone the users {@link TimeZone}
      */
-    public Context(@NonNull Map<@NonNull String, Object> values, @NonNull Locale locale, @NonNull TimeZone timeZone) {
+    public Context(Map<@NonNull String, Object> values, @NonNull Locale locale, @NonNull TimeZone timeZone) {
         super(values);
         this.locale = locale;
         this.timeZone = timeZone;
