@@ -12,4 +12,10 @@
         <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN"/>
     </Match>
 
+    <Match>
+        <!-- A TimeZone-field is effectively immutable (apart from its ID, which we do not process here) -->
+        <Field type="java.util.TimeZone"/>
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+    </Match>
+
 </FindBugsFilter>

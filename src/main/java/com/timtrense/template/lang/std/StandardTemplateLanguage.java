@@ -3,6 +3,7 @@ package com.timtrense.template.lang.std;
 import com.timtrense.template.PlaceholderDefinition;
 import com.timtrense.template.TemplateLanguage;
 import com.timtrense.template.TemplatePart;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.Getter;
 import lombok.NonNull;
 
@@ -44,7 +45,13 @@ public class StandardTemplateLanguage implements TemplateLanguage {
             "enum", new EnumPlaceholderDefinition(',')
     );
 
+    /**
+     * all known placeholders.
+     * The getter returns a mutable reference to the internal state to allow for easy "inline" extension of
+     * the standard language used in ones application
+     */
     @Getter
+    @SuppressFBWarnings("EI_EXPOSE_REP")
     private final @NonNull Map<String, PlaceholderDefinition> placeholderDefinitions;
 
     /**
@@ -77,6 +84,4 @@ public class StandardTemplateLanguage implements TemplateLanguage {
         }
         return nextPlaceholder.compile(placeholderMatcher.group(2));
     }
-
-
 }

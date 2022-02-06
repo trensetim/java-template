@@ -1,7 +1,6 @@
 package com.timtrense.template;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 
@@ -9,6 +8,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
 import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -20,7 +20,6 @@ import java.util.function.Consumer;
  * @since 1.0
  */
 @Data
-@AllArgsConstructor
 public class Template {
 
     private final @NonNull TemplatePart[] parts;
@@ -28,12 +27,18 @@ public class Template {
     /**
      * Instantiate from a {@link List}
      *
-     * @param parts the parts of this template
+     * @param parts the parts of this template. On the given {@link List} {@link List#toArray(Object[]) toArray} will be called
      */
     public Template(@NonNull List<@NonNull TemplatePart> parts) {
         this.parts = parts.toArray(new TemplatePart[0]);
     }
 
+    /**
+     * @param parts the parts of this template. The given array will be copied
+     */
+    public Template(@NonNull TemplatePart @NonNull [] parts) {
+        this.parts = Arrays.copyOf(parts, parts.length);
+    }
 
     /**
      * Ad-Hoc compiles a {@link Template} from the given source text and
@@ -59,6 +64,13 @@ public class Template {
     public static String process(@NonNull String templateText, @NonNull Map<@NonNull String, Object> values) {
         Template template = TemplateBuilder.build(templateText);
         return template.process(values);
+    }
+
+    /**
+     * @return an immutable copy of all parts of this
+     */
+    public @NonNull TemplatePart[] getParts() {
+        return Arrays.copyOf(parts, parts.length);
     }
 
     /**
