@@ -20,6 +20,12 @@ import java.util.function.Consumer;
  * @since 1.0
  */
 @Data
+/* The circular dependency is with TemplateBuilder, used from static process(templateText, context).
+   While not overly clean, this method lowers the learning curve for the library quite a bit
+   and reduces code complexities in the main use case of "just a quick template here" for users of this library.
+   So we accept this circ.dep. as a tradeoff for good developer experience.
+   */
+@SuppressFBWarnings("FCCD_FIND_CLASS_CIRCULAR_DEPENDENCY")
 public class Template {
 
     private final @NonNull TemplatePart[] parts;

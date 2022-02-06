@@ -1,6 +1,7 @@
 package com.timtrense.template;
 
 import com.timtrense.template.lang.std.StandardTemplateLanguage;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
@@ -23,6 +24,8 @@ import java.util.regex.Matcher;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
+/* See Template.@SuppressFBWarnings for explanation of circular dependency */
+@SuppressFBWarnings("FCCD_FIND_CLASS_CIRCULAR_DEPENDENCY")
 public class TemplateBuilder {
 
     /**
