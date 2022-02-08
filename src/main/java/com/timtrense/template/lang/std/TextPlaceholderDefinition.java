@@ -28,7 +28,7 @@ public class TextPlaceholderDefinition implements PlaceholderDefinition {
      * @param s separator, see {@link TextPlaceholderDefinition}
      */
     public TextPlaceholderDefinition(char s) {
-        pattern = Pattern.compile("(\\w[^" + s + "]*)" + s + "\\s*(.+)?", Pattern.CASE_INSENSITIVE);
+        pattern = Pattern.compile("(\\w[^" + s + "]*)(?:" + s + "\\s*(.+))?", Pattern.CASE_INSENSITIVE);
     }
 
     @Override
@@ -38,9 +38,9 @@ public class TextPlaceholderDefinition implements PlaceholderDefinition {
             return null;
         }
         String name = matcher.group(1);
-        String defaultValue = name;
+        String defaultValue = null;
         if (matcher.groupCount() > 1) {
-            defaultValue = matcher.group(2);
+            defaultValue = matcher.group(2); // maybe null if omitted
         }
         return new TextPlaceholder(name, defaultValue);
     }
