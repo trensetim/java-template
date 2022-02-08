@@ -89,7 +89,7 @@ public class TemplateBuilder {
 
             int start = placeholderMatcher.start();
 
-            if (templateText.charAt(start - 1) == escapeSequence || nextPart == null) {
+            if ((start > 0 && templateText.charAt(start - 1) == escapeSequence) || nextPart == null) {
                 // add text part between last placeholder and escape sequence
                 int endOfBetween = (nextPart != null) ? (start - 1) : start;
                 parts.add(new TextPart(templateText.substring(searchPosition, endOfBetween)));

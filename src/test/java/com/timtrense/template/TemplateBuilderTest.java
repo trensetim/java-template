@@ -70,4 +70,13 @@ public class TemplateBuilderTest {
 
         assertEquals("Hello, $UNKNOWN_PLACEHOLDER(time,yyyy-MM-dd,MY_DEFAULT_VALUE)!", text);
     }
+
+    @Test
+    public void build__onlyPlaceholder__validTemplate() {
+        String templateString = "$(var)";
+        Template template = TemplateBuilder.build(templateString);
+        String text = template.process(Map.of("var", "Test"));
+
+        assertEquals("Test", text);
+    }
 }
