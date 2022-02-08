@@ -49,6 +49,8 @@ There are some types of placeholders:
 - `$(myVar, myDefaultValue)` giving you just the String value of the variable
 - `$datetime(myVar, myFormat, myDefaultValue)` giving you just the formatted value
 - `$enum(myVar, myDefaultValue)` giving you the enums name
+- `$list(myVar, myDefaultValue, ;, {, })` giving you a list with ; as delimiter and enclosed by { and }.
+- `$list(myVar)` giving you a list with "null" as default, with ; as delimiter and enclosed by [ and ].
 - `$myCustomPlaceholderDefinition(whatever content i like)` can be implemented by you, see `PlaceholderDefinition`
 
 For examples on that, see src/example/.../CustomPlaceholderExample

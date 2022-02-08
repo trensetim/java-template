@@ -66,5 +66,4 @@ public class TemplateTest {
         assertEquals("Hello, MY_DEFAULT_VALUE!", result);
     }
 
-
 }

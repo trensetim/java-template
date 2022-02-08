@@ -42,7 +42,8 @@ public class StandardTemplateLanguage implements TemplateLanguage {
     private static final Map<String, PlaceholderDefinition> PLACEHOLDER_DEFINITIONS = Map.of(
             "", new TextPlaceholderDefinition(','),
             "datetime", new DateTimePlaceholderDefinition(','),
-            "enum", new EnumPlaceholderDefinition(',')
+            "enum", new EnumPlaceholderDefinition(','),
+            "list", new ListPlaceholderDefinition(',')
     );
 
     /**
