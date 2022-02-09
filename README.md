@@ -9,13 +9,15 @@ A minimal, easy to use, extreme high performance Template Engine for Java with a
 With many other templating engines at your hand, why choose this one?
 
 - It is way smaller and requires way less configuration (namely none) than, say thymeleaf.
-- It is intended to be used for very small templates on enormous throughput with just basic put-a-value-here logic (although you may build more complex things with custom placeholder types).
+- It is intended to be used for very small templates on enormous throughput with just basic put-a-value-here logic
+  (although you may build more complex things with custom placeholder types).
 - Its syntax is configurable to your hearts content.
 - Compared to `String.replace` its (a) blazing fast and (b) more expressive in code.
 
 # Features
 
-- Blazing fast template processing (around 16k hello world templates per millisecond in my local single-threaded benchmarks)
+- Blazing fast template processing (around 16k hello world templates per millisecond in my local single-threaded
+  benchmarks)
 - Builds precompiled templates as a java object structure
 - Ease to use template language
 - Configurable template language (if you prefer another syntactic flavor)
@@ -27,9 +29,9 @@ You can both use an inlined syntax, giving you adhoc-templating:
 
 ```java
 Template.process(
-    "Hello, $(name, World)!",
-    Map.of("name","Tim")
-)
+        "Hello, $(name, World)!",
+        Map.of("name","Tim")
+        )
 ```
 
 Or you may want to build a `Template` before using it multiple times (which gives you a significant performance boost).
@@ -41,8 +43,9 @@ String resultNow=helloWorldTemplate.process(Map.of("time",ZonedDateTime.now()));
 String resultLater=helloWorldTemplate.process(Map.of("time",ZonedDateTime.now()));
 ```
 
-As you can see, you may provide a default value if some placeholders are left blank. But you can omit that, auto-filling the placeholder with its name. Also the format for times and dates may be
-specified (falling back to ISO format if omitted).
+As you can see, you may provide a default value if some placeholders are left blank. But you can omit that, auto-filling
+the placeholder with its name. Also the format for times and dates may be specified (falling back to ISO format if
+omitted).
 
 There are some types of placeholders:
 
@@ -55,7 +58,8 @@ There are some types of placeholders:
 
 For examples on that, see src/example/.../CustomPlaceholderExample
 
-If you like to customize the locale settings, you may choose a slightly more verbose way (showing you lazy evaluation here too).
+If you like to customize the locale settings, you may choose a slightly more verbose way (showing you lazy evaluation
+here too).
 
 ```java
 Context context=new Context(Locale.GERMANY,TimeZone.getTimeZone(ZoneId.of("Europe/Berlin")));
@@ -65,7 +69,8 @@ String lazyText=helloWorldTemplate.process(context);
 
 # Benchmarks
 
-Some benchmarking results can be found in benchmark.txt and reproduced from src/benchmark/.../SpeedTest using JMH. Here is the key part:
+Some benchmarking results can be found in benchmark.txt and reproduced from src/benchmark/.../SpeedTest using JMH. Here
+is the key part:
 
 ```
 Each test case processes a hello world template (as seen above) 5 million times.
@@ -79,13 +84,14 @@ SpeedTest.test_thymeleaf                   avgt    3  4,860 ± 0,241   s/op
 
 # Installing
 
-You may get the library artifact from [this projects package repository](https://gitlab.timtrense.com/tim/java-template/-/packages).
+You may get the library artifact from
+[this projects package repository](https://gitlab.timtrense.com/tim/java-template/-/packages).
 
 ```groovy
 maven {
-  url 'https://gitlab.timtrense.com/api/v4/projects/10/packages/maven'
+    url 'https://gitlab.timtrense.com/api/v4/projects/10/packages/maven'
 }
-implementation 'com.timtrense:java-template:1.0'
+implementation group: 'com.timtrense', name: ' java-template'
 ```
 
 # Project insights
